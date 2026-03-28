@@ -2,6 +2,7 @@ import { Elysia } from "elysia";
 import { db } from "./db";           // Importamos la conexión a tu base de datos
 import { users } from "./db/schema"; // Importamos la tabla de usuarios
 import { cors } from "@elysiajs/cors";
+import {authRoutes} from "./routes/user.route";
 
 const app = new Elysia()
 
@@ -18,6 +19,8 @@ const app = new Elysia()
         const allUsers = await db.select().from(users);
         return allUsers;
     })
+
+    .use(authRoutes)
 
     // Encendemos el servidor en el puerto 3000
     .listen(3001);
