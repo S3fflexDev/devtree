@@ -75,12 +75,4 @@ export async function loginUser({ body, jwt, set }: any) {
         return { token: token };
 
     }
-
-    try {
-
-    } catch {
-
-    }
-
-
 }

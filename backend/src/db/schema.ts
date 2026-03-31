@@ -18,7 +18,6 @@ export const users = pgTable("users", {
 export const links = pgTable("links", {
     id: serial("id").primaryKey(),
     userId: integer("user_id").references(() => users.id).notNull(), // A qué usuario pertenece este link
-    title: varchar("title", { length: 100 }).notNull(), // Ej: "Mi GitHub"
     url: text("url").notNull(), // Ej: "https://github.com/juanperez"
     order: integer("order").notNull().default(0), // CLAVE para el Drag & Drop luego
     createdAt: timestamp("created_at").defaultNow(),
