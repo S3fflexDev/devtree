@@ -17,8 +17,28 @@ export const users = pgTable("users", {
 // Tabla de Enlaces (Los botones del DevTree)
 export const links = pgTable("links", {
     id: serial("id").primaryKey(),
-    userId: integer("user_id").references(() => users.id).notNull(), // A qué usuario pertenece este link
-    url: text("url").notNull(), // Ej: "https://github.com/juanperez"
-    order: integer("order").notNull().default(0), // CLAVE para el Drag & Drop luego
+    userId: integer("user_id").references(() => users.id).notNull(),
+
+    title: varchar("title", { length: 255 }).notNull(),
+    description: text("description"),
+
+    url: text("url").notNull(),
+    type: varchar("type", { length: 50 }).notNull().default("url"),
+
+    icon: varchar("icon", { length: 100 }),
+    imageUrl: text("image_url"),
+
+    order: integer("order").notNull().default(0),
+
+    isActive: boolean("is_active").notNull().default(true),
+    isArchived: boolean("is_archived").notNull().default(false),
+    openInNewTab: boolean("open_in_new_tab").notNull().default(true),
+
+    clickCount: integer("click_count").notNull().default(0),
+
+    publishedAt: timestamp("published_at"),
+    expiresAt: timestamp("expires_at"),
+
     createdAt: timestamp("created_at").defaultNow(),
+    updatedAt: timestamp("updated_at").defaultNow(),
 });
