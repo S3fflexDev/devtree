@@ -1,4 +1,4 @@
-// backend/src/db/schema.ts
+
 import { pgTable, serial, text, varchar, timestamp, integer, boolean } from "drizzle-orm/pg-core";
 
 // Tabla de Usuarios

@@ -17,6 +17,8 @@ export const authRoutes = new Elysia({ prefix: "/auth" })
     })
     .post("/login", loginUser)
     .get("/me", async ({ headers, jwt, set }) => {
+        // Testing
+
         const authHeader = headers.authorization;
 
         if (!authHeader) {

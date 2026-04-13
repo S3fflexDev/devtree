@@ -2,6 +2,7 @@ import { users } from "../../db/schema";
 import { eq } from "drizzle-orm";
 import {db} from "../../db";
 
+// Funciones de los endpoints relacionados con el inicio y registro de sesión
 export async function registerUser({ body, jwt, set }: any) {
 
     console.log("Cuerpo recibido:", body);

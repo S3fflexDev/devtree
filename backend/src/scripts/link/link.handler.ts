@@ -5,6 +5,8 @@ import {db} from "../../db";
 
 export async function createLink({ body, headers, set, jwt }: any) {
 
+    // Añadir datos (title*, etc...) en el body aplication/json
+
     const authHeader = headers.authorization;
 
     if (!authHeader) {
@@ -30,7 +32,8 @@ export async function createLink({ body, headers, set, jwt }: any) {
     try {
         const createdLink = await db.insert(links).values({
             userId: user.id,
-            url: user.username
+            url: user.username,
+            title: "test string"
         });
 
     } catch (err) {
